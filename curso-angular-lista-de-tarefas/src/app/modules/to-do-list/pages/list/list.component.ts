@@ -61,7 +61,7 @@ export class ListComponent {
     return localStorage.setItem('@my-list', JSON.stringify(this.setListItens()));
   }
 
-  updateItemValue(newItem: { id: string; value: string }) {
+  public updateItemValue(newItem: { id: string; value: string }) {
     this.setListItens.update((oldValue: IListItem[]) => {
       oldValue.filter(res => {
         if(res.id === newItem.id){
@@ -73,5 +73,13 @@ export class ListComponent {
     })
 
     return localStorage.setItem('@my-list', JSON.stringify(this.setListItens()));
+  }
+
+  public deleteItem(id: string) {
+    this.setListItens.update((oldValue: IListItem[]) => {
+      return oldValue.filter((res) => res.id !== id);
+    });
+    return localStorage.setItem('@my-list', JSON.stringify(this.parseItems()));
+
   }
 }

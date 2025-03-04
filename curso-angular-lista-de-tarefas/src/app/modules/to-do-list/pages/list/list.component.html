@@ -20,6 +20,7 @@
         [inputListItens]="listItensStage('pending')"
         (outPutUpdateItemCheckbox)="updateItemCheckbox($event)"
         (outPutUpdateItemValue)="updateItemValue($event)"
+        (outPutDeleteItem)="deleteItem($event)"
       />
     }
 
@@ -29,6 +30,7 @@
         [inputListItens]="listItensStage('completed')"
         (outPutUpdateItemCheckbox)="updateItemCheckbox($event)"
         (outPutUpdateItemValue)="updateItemValue($event)"
+        (outPutDeleteItem)="deleteItem($event)"
       />
     }
   </main>
