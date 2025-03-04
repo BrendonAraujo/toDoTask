@@ -1,18 +1,21 @@
 <div class="container">
-    <img src="assets/img/task-list-null.png" alt="Your list is empty - image" loading="eager" />
+  <img src="assets/img/task-list-null.png" alt="Your list is empty - image" loading="eager" />
 
-    <button class="btn btn-primary">
-        Crie uma lista de tarefas
+  @if (addItem()){
+    <button class="btn btn-primary" (click)="addItem.set(false)" >
+      Crie uma lista de tarefas
     </button>
-
+  } @else {
     <div>
-        <label class="input-label-text" for="inputValue">
-          <input id="inputValue" type="text" placeholder="Add a new iten" autofocus />
-          <button
-            class="btn btn-primary-circle"
-            title="Add a new item"
-          >
-          </button>
-        </label>
+      <label class="input-label-text" for="inputValue">
+        <input id="inputValue" type="text" placeholder="Add a new iten" autofocus />
+        <button
+          class="btn btn-primary-circle"
+          title="Add a new item"
+        >
+        </button>
+      </label>
     </div>
+  }
+
 </div>
