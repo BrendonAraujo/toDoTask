@@ -1,10 +1,14 @@
-import {ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Output, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, Output, ViewChild} from '@angular/core';
 import {IListItem} from '../../Interface/IListItem.interface';
+import {JsonPipe, NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-input-add-item',
   standalone: true,
-  imports: [],
+  imports: [
+    JsonPipe,
+    NgClass
+  ],
   templateUrl: './input-add-item.component.html',
   styleUrl: './input-add-item.component.scss'
 })
@@ -13,6 +17,7 @@ export class InputAddItemComponent {
 
   @ViewChild("inputText") public inputText!: ElementRef;
 
+  @Input({required: true}) public  inputListItens: Array<IListItem> = [];
   @Output() public outPutListItem = new EventEmitter<IListItem>();
 
   public focsAndAddItem(value: string){
@@ -27,8 +32,7 @@ export class InputAddItemComponent {
         id,
         checked: false,
         value
-      })
-      console.log("aa")
+      });
       return this.inputText.nativeElement.focus();
     }
   }
