@@ -60,4 +60,18 @@ export class ListComponent {
 
     return localStorage.setItem('@my-list', JSON.stringify(this.setListItens()));
   }
+
+  updateItemValue(newItem: { id: string; value: string }) {
+    this.setListItens.update((oldValue: IListItem[]) => {
+      oldValue.filter(res => {
+        if(res.id === newItem.id){
+          res.value = newItem.value;
+        }
+        return res;
+      })
+      return oldValue;
+    })
+
+    return localStorage.setItem('@my-list', JSON.stringify(this.setListItens()));
+  }
 }

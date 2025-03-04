@@ -19,6 +19,7 @@
       <app-input-list-item
         [inputListItens]="listItensStage('pending')"
         (outPutUpdateItemCheckbox)="updateItemCheckbox($event)"
+        (outPutUpdateItemValue)="updateItemValue($event)"
       />
     }
 
@@ -26,7 +27,9 @@
       <h2>Completed</h2>
       <app-input-list-item
         [inputListItens]="listItensStage('completed')"
-        (outPutUpdateItemCheckbox)="updateItemCheckbox($event)"/>
+        (outPutUpdateItemCheckbox)="updateItemCheckbox($event)"
+        (outPutUpdateItemValue)="updateItemValue($event)"
+      />
     }
   </main>
 

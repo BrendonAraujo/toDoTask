@@ -20,4 +20,13 @@ export class InputListItemComponent {
   public updateItemCheckbox(id:string, checked:boolean){
     return this.outPutUpdateItemCheckbox.emit({id, checked});
   }
+
+  @Output() public outPutUpdateItemValue = new EventEmitter<{
+    id: string;
+    value : string
+  }>();
+
+  public updateItemValue(id:string, value:string){
+    return this.outPutUpdateItemValue.emit({id, value});
+  }
 }
