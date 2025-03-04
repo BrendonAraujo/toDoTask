@@ -2,11 +2,12 @@ import {Component, signal} from '@angular/core';
 import {InputAddItemComponent} from '../../components/input-add-item/input-add-item.component';
 import {IListItem} from '../../Interface/IListItem.interface';
 import {JsonPipe, NgOptimizedImage} from '@angular/common';
+import {InputListItemComponent} from '../../components/input-list-item/input-list-item.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [InputAddItemComponent, JsonPipe, NgOptimizedImage],
+  imports: [InputAddItemComponent, InputListItemComponent, NgOptimizedImage],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
