@@ -4,12 +4,18 @@
   @if (inputListItens.length){
     <h1>My List</h1>
   }
-  <div>
-    <label class="input-label-text" for="inputValue">
+  <div
+    [ngClass]="{
+      'container': inputListItens.length
+    }"
+  >
+    <label
+      class="input-label-text" for="inputValue"
+      [ngClass]="{
+        'remove-margin-bottom': inputListItens.length
+      }"
+    >
       <input
-        [ngClass]="{
-          'remove-margin-bottom': inputListItens.length
-        }"
         id="inputValue"
         type="text"
         placeholder="Add a new iten"

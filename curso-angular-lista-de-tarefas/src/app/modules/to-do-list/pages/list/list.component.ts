@@ -1,12 +1,12 @@
 import {Component, signal} from '@angular/core';
 import {InputAddItemComponent} from '../../components/input-add-item/input-add-item.component';
 import {IListItem} from '../../Interface/IListItem.interface';
-import {JsonPipe} from '@angular/common';
+import {JsonPipe, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [InputAddItemComponent , JsonPipe],
+  imports: [InputAddItemComponent, JsonPipe, NgOptimizedImage],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
@@ -27,6 +27,11 @@ export class ListComponent {
       JSON.stringify([...this.setListItens(), item])
     );
 
+    return this.setListItens.set(this.parseItems());
+  }
+
+  public deleteAllItens() {
+    localStorage.removeItem('@my-list');
     return this.setListItens.set(this.parseItems());
   }
 }

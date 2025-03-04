@@ -26,7 +26,7 @@ export class InputAddItemComponent {
       this.inputText.nativeElement.value = "";
 
       const currentDate = new Date();
-      const id = `ID ${currentDate.getFullYear()}`;
+      const id = `ID ${currentDate}`;
 
       this.outPutListItem.emit({
         id,

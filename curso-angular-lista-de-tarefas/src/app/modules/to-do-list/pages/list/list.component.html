@@ -1,12 +1,22 @@
-<div class="container">
-  <img src="assets/img/task-list-null.png" alt="Your list is empty - image" loading="eager" />
+@if (!getListItens().length){
+  <div class="container">
+    <img ngSrc="assets/img/task-list-null.png" alt="Your list is empty - image" loading="eager" height="166" width="160"/>
 
-  @if (addItem()){
-    <button class="btn btn-primary" (click)="addItem.set(false)" >
-      Crie uma lista de tarefas
-    </button>
-  } @else {
-    <app-input-add-item [inputListItens]="getListItens()" (outPutListItem)="getInputAndAddItem($event)"/>
-  }
+    @if (addItem()){
+      <button class="btn btn-primary" (click)="addItem.set(false)" >
+        Crie uma lista de tarefas
+      </button>
+    } @else {
+      <app-input-add-item [inputListItens]="getListItens()" (outPutListItem)="getInputAndAddItem($event)"/>
+    }
+  </div>
+} @else {
+  <app-input-add-item [inputListItens]="getListItens()" (outPutListItem)="getInputAndAddItem($event)"/>
 
-</div>
+  <main class="container">
+  </main>
+
+  <footer>
+    <button class="btn btn-danger" (click)="deleteAllItens()">Delete All Itens</button>
+  </footer>
+}
