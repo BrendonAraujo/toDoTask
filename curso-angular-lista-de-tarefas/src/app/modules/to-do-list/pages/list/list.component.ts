@@ -35,4 +35,15 @@ export class ListComponent {
     localStorage.removeItem('@my-list');
     return this.setListItens.set(this.parseItems());
   }
+
+  public listItensStage(value: 'pending' | 'completed'): IListItem[] {
+    return this.getListItens().filter((res: IListItem) => {
+      if(value === 'pending') {
+        return !res.checked;
+      }else if (value == 'completed'){
+        return  res.checked;
+      }
+      return res;
+    });
+  }
 }

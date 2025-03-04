@@ -14,11 +14,13 @@
   <app-input-add-item [inputListItens]="getListItens()" (outPutListItem)="getInputAndAddItem($event)"/>
 
   <main class="container">
-    <h2>Waiting..</h2>
-    <app-input-list-item [inputListItens]="getListItens()" />
-
-    <h2>Finished</h2>
-    <app-input-list-item [inputListItens]="getListItens()" />
+    @if (listItensStage('pending').length) {
+      <h2>Pending..</h2>
+      <app-input-list-item [inputListItens]="listItensStage('pending')" />
+    } @else if (listItensStage('completed').length){
+      <h2>Completed</h2>
+      <app-input-list-item [inputListItens]="listItensStage('completed')" />
+    }
   </main>
 
   <footer>
