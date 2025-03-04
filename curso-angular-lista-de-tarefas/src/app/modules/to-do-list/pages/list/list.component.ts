@@ -4,6 +4,7 @@ import {IListItem} from '../../Interface/IListItem.interface';
 import {JsonPipe, NgOptimizedImage} from '@angular/common';
 import {InputListItemComponent} from '../../components/input-list-item/input-list-item.component';
 import {ELocalStorage} from '../../Enum/ELocalStorage.enum';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list',
@@ -33,8 +34,19 @@ export class ListComponent {
   }
 
   public deleteAllItens() {
-    localStorage.removeItem(ELocalStorage.MY_LIST);
-    return this.setListItens.set(this.parseItems());
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem(ELocalStorage.MY_LIST);
+        return this.setListItens.set(this.parseItems());
+      }
+    });
+
   }
 
   public listItensStage(value: 'pending' | 'completed'): IListItem[] {
@@ -76,10 +88,20 @@ export class ListComponent {
   }
 
   public deleteItem(id: string) {
-    this.setListItens.update((oldValue: IListItem[]) => {
-      return oldValue.filter((res) => res.id !== id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.setListItens.update((oldValue: IListItem[]) => {
+          return oldValue.filter((res) => res.id !== id);
+        });
+        return localStorage.setItem(ELocalStorage.MY_LIST, JSON.stringify(this.parseItems()));
+      }
     });
-    return localStorage.setItem(ELocalStorage.MY_LIST, JSON.stringify(this.parseItems()));
   }
 
   private updateLocalStorage(){
