@@ -16,10 +16,17 @@
   <main class="container">
     @if (listItensStage('pending').length) {
       <h2>Pending..</h2>
-      <app-input-list-item [inputListItens]="listItensStage('pending')" />
-    } @else if (listItensStage('completed').length){
+      <app-input-list-item
+        [inputListItens]="listItensStage('pending')"
+        (outPutUpdateItemCheckbox)="updateItemCheckbox($event)"
+      />
+    }
+
+    @if (listItensStage('completed').length){
       <h2>Completed</h2>
-      <app-input-list-item [inputListItens]="listItensStage('completed')" />
+      <app-input-list-item
+        [inputListItens]="listItensStage('completed')"
+        (outPutUpdateItemCheckbox)="updateItemCheckbox($event)"/>
     }
   </main>
 

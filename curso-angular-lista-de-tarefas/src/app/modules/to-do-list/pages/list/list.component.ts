@@ -46,4 +46,18 @@ export class ListComponent {
       return res;
     });
   }
+
+  public updateItemCheckbox(newItem: { id: string; checked: boolean }) {
+    this.setListItens.update((oldValue: IListItem[]) => {
+      oldValue.filter(res => {
+        if(res.id === newItem.id){
+          res.checked = newItem.checked;
+        }
+        return res;
+      })
+      return oldValue;
+    })
+
+    return localStorage.setItem('@my-list', JSON.stringify(this.setListItens()));
+  }
 }
